@@ -1,12 +1,12 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-const Welcome = () => {
+const ListAreas = () => {
     return (
         <View>
-            <Text>{'Welcome to Customer Manager Plus'}</Text>
+            <Text>{'Welcome to ListAreas'}</Text>
         </View>
     )
 }
 
-export default Welcome
+export default ListAreas
