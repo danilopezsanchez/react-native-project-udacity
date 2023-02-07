@@ -2,20 +2,20 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-const ListAreas = () => {
+const ListCustomers = () => {
 	const { navigate } = useNavigation()
     return (
         <View>
             <Text>{'Welcome to ListAreas'}</Text>
 			<TouchableOpacity 
 				onPress={() => {
-				navigate('ListCustomers')
+				navigate('CustomerDetail')
 				}}
 			>
-				<Text>See ListCustomers</Text>
+				<Text>Customer detail</Text>
 			</TouchableOpacity>
         </View>
     )
 }
 
-export default ListAreas
+export default ListCustomers
