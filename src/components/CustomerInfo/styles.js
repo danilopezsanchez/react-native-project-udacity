@@ -3,11 +3,13 @@ import { StyleSheet } from 'react-native'
 const stylesFn = () => {
 
 	const styles = {
-		content: {
-			alignItems: 'center',
-			flex: 1,
-			justifyContent: 'center'
-		},
+
+		customerContainer: {
+			border: '1px solid grey',
+			margin: 10,
+			padding: 20,
+			fontSize: '18px',
+		}
 	}
 
 	return StyleSheet.create(styles);

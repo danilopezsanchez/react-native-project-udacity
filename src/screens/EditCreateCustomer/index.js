@@ -1,21 +1,16 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import NewCustomer from '../../features/NewCustomer'
 
-const EditCustomer = () => {
+const EditCreateCustomer = () => {
 	const { navigate } = useNavigation()
     return (
         <View>
             <Text>{'Welcome to Customer Detail'}</Text>
-			<TouchableOpacity 
-				onPress={() => {
-				navigate('ListCustomers')
-				}}
-			>
-				<Text>Update</Text>
-			</TouchableOpacity>
+			<NewCustomer />
         </View>
     )
 }
 
-export default EditCustomer
+export default EditCreateCustomer

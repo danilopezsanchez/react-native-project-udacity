@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Welcome from '../screens/Welcome'
 import ListAreas from '../screens/ListAreas'
 import ListCustomers from '../screens/ListCustomers'
-import CustomerDetail from '../screens/CustomerDetail'
 import EditCreateCustomer from '../screens/EditCreateCustomer'
 
 const Stack = createNativeStackNavigator()
@@ -23,17 +22,14 @@ const Navigation = () => {
             component={ListAreas}
         />
 		<Stack.Screen
-            name='ListCustomers'
-            component={ListCustomers}
-        />
-		<Stack.Screen
-            name='CustomerDetail'
-            component={CustomerDetail}
-        />
-		<Stack.Screen
             name='EditCreateCustomer'
             component={EditCreateCustomer}
         />
+		<Stack.Screen
+            name='ListCustomers'
+            component={ListCustomers}
+        />
+		
       </Stack.Navigator>
     </NavigationContainer>
   )
