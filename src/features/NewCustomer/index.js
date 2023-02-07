@@ -13,7 +13,8 @@ const NewCustomer = () => {
 		name,
 		lastname,
 		active,
-		area
+		area,
+		documentID,
 	} = fields;
 
 	return (
@@ -37,6 +38,14 @@ const NewCustomer = () => {
 			/>
 
 			<TextInput
+				key={'documentID'}
+				placeholder='Document ID'
+				value={documentID}
+				style={styles.inputField}
+				onChangeText={v => setFormField('documentID', v)}
+			/>
+
+			<TextInput
 				key={'active'}
 				placeholder='active'
 				value={active}
@@ -52,7 +61,7 @@ const NewCustomer = () => {
 				onChangeText={v => setFormField('area', v)}
 			/>
 
-			<Button linkActionFunction={() => (alert("submit"))} textButton='Submit' />
+			<Button linkActionFunction={() => (alert("submit"))} textButton='Save customer info' />
 		</View>
 	)
 }

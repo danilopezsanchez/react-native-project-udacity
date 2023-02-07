@@ -7,7 +7,6 @@ const EditCreateCustomer = () => {
 	const { navigate } = useNavigation()
     return (
         <View>
-            <Text>{'Welcome to Customer Detail'}</Text>
 			<NewCustomer />
         </View>
     )

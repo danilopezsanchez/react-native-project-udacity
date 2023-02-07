@@ -4,7 +4,8 @@ export const useUpdateFields = () => {
 	  name: '',
 	  lastname: '',
 	  active: '',
-	  area: ''
+	  area: '',
+	  documentID:'',
 	}
   
 	return {

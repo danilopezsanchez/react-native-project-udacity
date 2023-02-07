@@ -16,18 +16,22 @@ const Navigation = () => {
         <Stack.Screen
             name='Welcome'
             component={Welcome}
+			options={{ title: 'Customer Manager Plus' }}
         />
         <Stack.Screen
             name='ListAreas'
             component={ListAreas}
+			options={{ title: 'List of areas' }}
         />
 		<Stack.Screen
             name='EditCreateCustomer'
             component={EditCreateCustomer}
+			options={{ title: 'Customer information' }}
         />
 		<Stack.Screen
             name='ListCustomers'
             component={ListCustomers}
+			options={{ title: 'List of customers' }}
         />
 		
       </Stack.Navigator>
