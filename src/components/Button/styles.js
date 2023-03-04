@@ -6,7 +6,7 @@ const stylesFn = () => {
 
 		cta: {
 			backgroundColor: 'blue',
-			padding: '15pt 25pt',
+			padding: '25',
 			borderRadius: 5,
 			width: '90%',
 			height: 50,

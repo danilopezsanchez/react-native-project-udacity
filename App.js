@@ -1,11 +1,16 @@
+import { Provider } from 'react-redux';
+import initializeStore from './src/store';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './src/navigation';
-//import Welcome from './src/screens/Welcome';
+
+const store = initializeStore();
 
 export default function App() {
   return (
-	<Navigation />
+	<Provider store={store}>
+		<Navigation />
+	</Provider>
   );
 }
 

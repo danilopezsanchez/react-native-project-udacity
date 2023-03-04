@@ -1,6 +1,6 @@
 
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import { useUpdateFields } from '../hooks'
+import { useUpdateFields } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
 
@@ -16,6 +16,10 @@ const NewCustomer = () => {
 		area,
 		documentID,
 	} = fields;
+
+	const submitFormFunction = () => {
+		alert("submit")
+	}
 
 	return (
 		<View style={styles.container}>
@@ -61,7 +65,7 @@ const NewCustomer = () => {
 				onChangeText={v => setFormField('area', v)}
 			/>
 
-			<Button linkActionFunction={() => (alert("submit"))} textButton='Save customer info' />
+			<Button linkActionFunction={ submitFormFunction } textButton='Save customer info' />
 		</View>
 	)
 }
