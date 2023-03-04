@@ -49,3 +49,13 @@ export const useResetCustomerStatus = () => {
 		onSubmit: () => dispatch(actions.resetStatus())
 	}
 }
+
+export const useListCustomer = () => {
+	// const dispatch = useDispatch()
+  
+	// useEffect(() => {
+	//   dispatch(actions.loadCustomers())
+	// }, [dispatch])
+	
+	return useSelector(state => state.customer.list.customers)
+  }

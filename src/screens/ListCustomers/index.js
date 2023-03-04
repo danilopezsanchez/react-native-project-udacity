@@ -4,13 +4,14 @@ import { ScrollView, SafeAreaView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import CustomerInfo from '../../components/CustomerInfo'
 import { useSelector } from "react-redux";
+import { useListCustomer } from '../../features/Form/hooks'
 
 
 const ListCustomers = (props) => {
 	
 	const { navigate } = useNavigation()
 	const areaSelected = props.route.params.area;
-	let customers = useSelector(state => state.customer.list.customers);
+	let customers = useListCustomer()
 	customers = customers.filter((item) => {
 		return item.area === areaSelected;
 	})
@@ -37,6 +38,7 @@ const ListCustomers = (props) => {
 					)
 				})
 			}
+			{!customers || customers.length === 0 && <Text>{'No customers added yet'}</Text>}
 			
         </View>
 		</ScrollView>
