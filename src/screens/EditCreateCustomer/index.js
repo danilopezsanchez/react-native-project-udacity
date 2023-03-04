@@ -7,7 +7,7 @@ const EditCreateCustomer = (props) => {
 	console.log(userSelected)
     return (
         <View>
-			<NewCustomer />
+			<NewCustomer userEdition={userSelected} />
         </View>
     )
 }

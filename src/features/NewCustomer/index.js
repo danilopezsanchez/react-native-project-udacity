@@ -4,22 +4,21 @@ import { useNewCustomer, useUpdateFields } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
 
-const NewCustomer = () => {
-
+const NewCustomer = (props) => {
 	const { fields, setFormField } = useUpdateFields()
 	const styles = stylesFn();
 	const { onSubmit } = useNewCustomer();
+	const isEdition = props.userEdition !== undefined;
 
 	const {
 		name,
 		lastname,
 		active,
 		area,
-	} = fields;
+	} = isEdition? props.userEdition: fields;
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.form}></View>
 
 			<TextInput
 				key={'name'}
@@ -53,7 +52,9 @@ const NewCustomer = () => {
 				onChangeText={v => setFormField('area', v)}
 			/>
 
-			<Button linkActionFunction={ onSubmit } textButton='Save customer info' />
+			{isEdition ? 
+			<Button linkActionFunction={ onSubmit } textButton='Edit customer info' />:
+			<Button linkActionFunction={ onSubmit } textButton='Save customer' />}
 		</View>
 	)
 }
