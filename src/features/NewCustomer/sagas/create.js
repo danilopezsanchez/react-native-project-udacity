@@ -14,7 +14,7 @@ export function* takeCreateCustomer() {
         const customer = {
             id: customers.length + 1,
             ...fields,
-        }
+        };
 
         // pretend call to API
         yield delay(500)

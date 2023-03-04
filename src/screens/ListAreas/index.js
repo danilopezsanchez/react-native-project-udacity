@@ -8,8 +8,9 @@ const ListAreas = () => {
 	const styles = stylesFn();
 	const { navigate } = useNavigation()
 
-	const handleNavigationArea = () => {
-		navigate('ListCustomers');
+	const handleNavigationArea = (area) => {
+		console.log(area)
+		navigate('ListCustomers', {area});
 	}
 
 	const handleCreateCustomer = () => {
@@ -20,10 +21,10 @@ const ListAreas = () => {
         <View style={styles.content}>
 			<Button linkActionFunction={handleCreateCustomer} textButton='Create customer' />
             <Text>{'List of Areas:'}</Text>
-			<Button linkActionFunction={handleNavigationArea} textButton='North customers' />
-			<Button linkActionFunction={handleNavigationArea} textButton='West customers' />
-			<Button linkActionFunction={handleNavigationArea} textButton='South customers' />
-			<Button linkActionFunction={handleNavigationArea} textButton='East customers' />
+			<Button linkActionFunction={() => {handleNavigationArea("north")}} textButton='North customers' />
+			<Button linkActionFunction={() => {handleNavigationArea("west")}} textButton='West customers' />
+			<Button linkActionFunction={() => {handleNavigationArea("south")}} textButton='South customers' />
+			<Button linkActionFunction={() => {handleNavigationArea("east")}} textButton='East customers' />
 			
         </View>
     )
