@@ -1,13 +1,18 @@
 
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import { useNewCustomer, useUpdateFields } from './hooks'
+import { useNewCustomer, useUpdateFields, useEditCustomer } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
 
 const NewCustomer = (props) => {
-	const { fields, setFormField } = useUpdateFields()
+	let customerID = null;
+	console.log("userEdition:" ,props.userEdition?.id)
+	if(props.userEdition?.id)
+		customerID = props.userEdition?.id
+	const { fields, setFormField } = useUpdateFields(customerID);
 	const styles = stylesFn();
 	const { onSubmit } = useNewCustomer();
+	const { onSubmitEdit } = useEditCustomer();
 	const isEdition = props.userEdition !== undefined;
 
 	const {
@@ -15,7 +20,8 @@ const NewCustomer = (props) => {
 		lastname,
 		active,
 		area,
-	} = isEdition? props.userEdition: fields;
+		id,
+	} = fields;
 
 	return (
 		<View style={styles.container}>
@@ -23,7 +29,7 @@ const NewCustomer = (props) => {
 			<TextInput
 				key={'name'}
 				placeholder='Name'
-				value={name}
+				value={name || ''}
 				onChangeText={v => setFormField('name', v)}
 				style={styles.inputField}
 			/>
@@ -31,7 +37,7 @@ const NewCustomer = (props) => {
 			<TextInput
 				key={'lastname'}
 				placeholder='LastName'
-				value={lastname}
+				value={lastname || ''}
 				style={styles.inputField}
 				onChangeText={v => setFormField('lastname', v)}
 			/>
@@ -39,7 +45,7 @@ const NewCustomer = (props) => {
 			<TextInput
 				key={'active'}
 				placeholder='active'
-				value={active}
+				value={active || ''}
 				style={styles.inputField}
 				onChangeText={v => setFormField('active', v)}
 			/>
@@ -47,13 +53,13 @@ const NewCustomer = (props) => {
 			<TextInput
 				key={'area'}
 				placeholder='area'
-				value={area}
+				value={area || ''}
 				style={styles.inputField}
 				onChangeText={v => setFormField('area', v)}
 			/>
 
 			{isEdition ? 
-			<Button linkActionFunction={ onSubmit } textButton='Edit customer info' />:
+			<Button linkActionFunction={ () => { onSubmitEdit(id) } } textButton='Edit customer info' />:
 			<Button linkActionFunction={ onSubmit } textButton='Save customer' />}
 		</View>
 	)

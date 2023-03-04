@@ -9,7 +9,6 @@ const ListAreas = () => {
 	const { navigate } = useNavigation()
 
 	const handleNavigationArea = (area) => {
-		console.log(area)
 		navigate('ListCustomers', {area});
 	}
 

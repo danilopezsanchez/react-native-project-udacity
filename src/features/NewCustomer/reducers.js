@@ -34,6 +34,7 @@ const initialState = {
 			lastname: '',
 			active: '',
 			area: '',
+			id: '',
 		}
 	},
     error: {
@@ -48,11 +49,26 @@ const reducers = {
 	createCustomerResult: (state, { payload }) => {
 		state.create.status = SUCCESS
 		state.list.customers = payload
+		state.form.fields = initialState.form.fields
 	},
 	createCustomerError: (state, { payload }) => {
 		state.create.status = ERROR
 		state.error.message = payload
+		state.form.fields = initialState.form.fields
 	},
+	editCustomer: (state, { payload }) => {
+        state.edit.status = REQUESTING
+    },
+	editCustomerResult: (state, { payload }) => {
+        state.edit.status = SUCCESS
+        state.list.customers = payload
+        state.form.fields = initialState.form.fields
+    },
+    editCustomerError: (state) => {
+        state.edit.status = ERROR
+        state.error.message = payload
+        state.form.fields = initialState.form.fields
+    },
 	setFormField: (state, { payload }) => {
         const current = state.form.fields
         const { field, value } = payload
@@ -63,6 +79,15 @@ const reducers = {
         }
 
         state.form.fields = fields
+    },
+	setForm: (state, { payload }) => {
+        const customer = state.list.customers.find(a => a.id === payload)
+
+        if (customer) {
+            state.form.fields = customer
+        } else {
+            state.error.message = `could not find animal with id: ${payload}`
+        }
     },
 }
 
@@ -76,7 +101,11 @@ export const {
     createCustomer,
     createCustomerResult,
     createCustomerError,
-    setFormField
+	editCustomer,
+	editCustomerResult,
+	editCustomerError,
+    setFormField,
+	setForm,
 } = slice.actions
 
 export default slice.reducer
