@@ -3,6 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const name = 'customer'
 
 const initialState = {
+	list: {
+        customers: []
+    },
 	form:{
 		fields:{
 			name: '',
@@ -19,7 +22,6 @@ const reducers = {
 
 	},
 	createCustomerResult: (state, { payload }) => {
-		state.create.status = status.SUCCESS
 		state.list.customers = payload
 	},
 	createCustomerError: (state, { payload }) => {
