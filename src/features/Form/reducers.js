@@ -6,20 +6,6 @@ const name = 'customer'
 const initialState = {
 	list: {
         customers: [
-			// {
-			// 	id: 2,
-			// 	name: 'jose',
-			// 	lastname: 'lopez',
-			// 	active: 'true',
-			// 	area: 'south'
-			// },
-			// {
-			// 	id: 1,
-			// 	name: 'dani',
-			// 	lastname: 'lopez',
-			// 	active: 'true',
-			// 	area: 'north'
-			// }
 		]
     },
 	create: {
