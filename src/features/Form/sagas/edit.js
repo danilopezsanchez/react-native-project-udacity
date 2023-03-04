@@ -1,5 +1,6 @@
 import { all, put, select, takeLatest, delay } from 'redux-saga/effects'
 import * as actions from '../reducers'
+import { set } from '../../../utilities/async_storage'
 
 export function* watchEditCustomer() {
     yield takeLatest(actions.editCustomer.toString(), takeEditCustomer)
@@ -8,7 +9,6 @@ export function* watchEditCustomer() {
 export function* takeEditCustomer(action) {
     console.log('Starting fetch request to API -- EDIT')
     const customerID = action.payload
-	console.log(customerID)
 
     try {
         const fields = yield select(state => state.customer.form.fields)
@@ -23,7 +23,7 @@ export function* takeEditCustomer(action) {
 
         // pretend call to API
         yield delay(500)
-		console.log(result);
+		yield set('CUSTOMERS_KEY', result);
         yield put(actions.editCustomerResult(result))
     } catch (error) {
         yield put(actions.editCustomerError(error.toString()))

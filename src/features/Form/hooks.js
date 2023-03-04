@@ -51,11 +51,11 @@ export const useResetCustomerStatus = () => {
 }
 
 export const useListCustomer = () => {
-	// const dispatch = useDispatch()
+	const dispatch = useDispatch()
   
-	// useEffect(() => {
-	//   dispatch(actions.loadCustomers())
-	// }, [dispatch])
+	useEffect(() => {
+	  dispatch(actions.loadCustomers())
+	}, [dispatch])
 	
 	return useSelector(state => state.customer.list.customers)
   }

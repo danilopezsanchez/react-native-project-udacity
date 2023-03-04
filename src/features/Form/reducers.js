@@ -6,20 +6,20 @@ const name = 'customer'
 const initialState = {
 	list: {
         customers: [
-			{
-				id: 2,
-				name: 'jose',
-				lastname: 'lopez',
-				active: 'true',
-				area: 'south'
-			},
-			{
-				id: 1,
-				name: 'dani',
-				lastname: 'lopez',
-				active: 'true',
-				area: 'north'
-			}
+			// {
+			// 	id: 2,
+			// 	name: 'jose',
+			// 	lastname: 'lopez',
+			// 	active: 'true',
+			// 	area: 'south'
+			// },
+			// {
+			// 	id: 1,
+			// 	name: 'dani',
+			// 	lastname: 'lopez',
+			// 	active: 'true',
+			// 	area: 'north'
+			// }
 		]
     },
 	create: {
@@ -34,7 +34,6 @@ const initialState = {
 			lastname: '',
 			active: '',
 			area: '',
-			id: '',
 		}
 	},
     error: {
@@ -64,7 +63,7 @@ const reducers = {
         state.list.customers = payload
         state.form.fields = initialState.form.fields
     },
-    editCustomerError: (state) => {
+    editCustomerError: (state, { payload }) => {
         state.edit.status = ERROR
         state.error.message = payload
         state.form.fields = initialState.form.fields
@@ -92,7 +91,12 @@ const reducers = {
 	resetStatus: (state) => {
 		state.edit = initialState.edit
 		state.create = initialState.create
-	}
+	},
+	loadCustomers: () => {
+    },
+    loadResult: (state, { payload }) => {
+        state.list.customers = payload
+    },
 }
 
 const slice = createSlice ({
@@ -111,6 +115,8 @@ export const {
     setFormField,
 	setForm,
 	resetStatus,
+	loadCustomers,
+	loadResult,
 } = slice.actions
 
 export default slice.reducer

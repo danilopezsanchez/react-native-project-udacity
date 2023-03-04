@@ -4,9 +4,8 @@ import { useNewCustomer, useUpdateFields, useEditCustomer } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
 
-const NewCustomer = (props) => {
+const Form = (props) => {
 	let customerID = null;
-	console.log("userEdition:" ,props.userEdition?.id)
 	if(props.userEdition?.id)
 		customerID = props.userEdition?.id
 	const { fields, setFormField } = useUpdateFields(customerID);
@@ -20,7 +19,6 @@ const NewCustomer = (props) => {
 		lastname,
 		active,
 		area,
-		id,
 	} = fields;
 
 	return (
@@ -59,10 +57,10 @@ const NewCustomer = (props) => {
 			/>
 
 			{isEdition ? 
-			<Button linkActionFunction={ () => { onSubmitEdit(id) } } textButton='Edit customer info' />:
+			<Button linkActionFunction={ () => { onSubmitEdit(customerID) } } textButton='Edit customer info' />:
 			<Button linkActionFunction={ onSubmit } textButton='Save customer' />}
 		</View>
 	)
 }
 
-export default NewCustomer;
+export default Form;
