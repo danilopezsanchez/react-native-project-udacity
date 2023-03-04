@@ -42,3 +42,10 @@ export const useEditCustomer = () => {
 export const useEditCustomerStatus = () => {
 	return useSelector(state => state.customer.edit.status)
 }
+
+export const useResetCustomerStatus = () => {
+	const dispatch = useDispatch();
+	return {
+		onSubmit: () => dispatch(actions.resetStatus())
+	}
+}

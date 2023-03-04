@@ -86,9 +86,13 @@ const reducers = {
         if (customer) {
             state.form.fields = customer
         } else {
-            state.error.message = `could not find animal with id: ${payload}`
+            state.error.message = `could not find customer with id: ${payload}`
         }
     },
+	resetStatus: (state) => {
+		state.edit = initialState.edit
+		state.create = initialState.create
+	}
 }
 
 const slice = createSlice ({
@@ -106,6 +110,7 @@ export const {
 	editCustomerError,
     setFormField,
 	setForm,
+	resetStatus,
 } = slice.actions
 
 export default slice.reducer

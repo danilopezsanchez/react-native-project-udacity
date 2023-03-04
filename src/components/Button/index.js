@@ -11,7 +11,7 @@ const Button = (props) => {
 				style={styles.cta}
 			>
 				<Text style={styles.buttonText}>{textButton}</Text>
-			</TouchableOpacity>
+		</TouchableOpacity>
 	)
 }
 

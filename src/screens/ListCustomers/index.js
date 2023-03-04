@@ -23,7 +23,6 @@ const ListCustomers = (props) => {
 		<SafeAreaView>
     	<ScrollView>
         <View>
-            <Text>{'List of customers'}</Text>
 			{
 				customers && customers.map((item) => {
 					return(
