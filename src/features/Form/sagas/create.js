@@ -22,6 +22,7 @@ export function* takeCreateCustomer() {
 		yield set('CUSTOMERS_KEY', result);
         yield put(actions.createCustomerResult(result))
     } catch (error) {
+		console.log("ERROR:"+error)
         yield put(actions.createCustomerError(error.toString()))
     }
 }

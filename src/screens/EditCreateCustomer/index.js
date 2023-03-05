@@ -22,17 +22,17 @@ const EditCreateCustomer = (props) => {
     return (
         <View>
 			{
-				(statusCreation !== SUCCESS && statusEdition !== SUCCESS) && 
-				<Form userEdition={userSelected} />
+				(statusCreation !== SUCCESS && statusEdition !== SUCCESS) ? 
+				<Form userEdition={userSelected} /> : null
 			}
 			{
-				(statusCreation === SUCCESS || statusEdition === SUCCESS) && (
+				(statusCreation === SUCCESS || statusEdition === SUCCESS) ? (
 				<View>
 					<Text>{statusCreation === SUCCESS ? 'Customer created succesfully!' : ''}</Text>
 					<Text>{statusEdition === SUCCESS ? 'Customer edited succesfully!' : ''}</Text>
 					<Button linkActionFunction={handleContinue} textButton='Accept' />
 				</View>
-				)
+				) : null
 			}
         </View>
     )

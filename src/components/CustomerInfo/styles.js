@@ -5,10 +5,11 @@ const stylesFn = () => {
 	const styles = {
 
 		customerContainer: {
-			border: '1px solid grey',
+			borderWidth: 1,
+			borderColor: 'grey',
 			margin: 10,
 			padding: 20,
-			fontSize: '18px',
+			fontSize: 18,
 		}
 	}
 

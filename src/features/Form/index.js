@@ -1,5 +1,6 @@
 
-import { View, Text, TextInput, Picker } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
+import { Picker } from '@react-native-picker/picker'
 import { useNewCustomer, useUpdateFields, useEditCustomer } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
@@ -21,6 +22,8 @@ const Form = (props) => {
 		active,
 		area,
 	} = fields;
+	console.log("areaaaa:", area)
+	console.log("activeeee:", active)
 
 	//const [selectedValue, setSelectedValue] = useState("java");
 
@@ -45,28 +48,30 @@ const Form = (props) => {
 			/>
 
 			<Text style={styles.textField}>{'Active:'}</Text>
-			<Picker
-				selectedValue={active}
-				style={styles.inputField}
-				onValueChange={v => setFormField('active', v)}
-			>
-				<Picker.Item label="Active" value="true" />
-				<Picker.Item label="Inactive" value="false" />
-			</Picker>
+			<View style={styles.selectField}>
+				<Picker
+					selectedValue={active || setFormField('active', true)}
+					onValueChange={v => setFormField('active', v)}
+				>
+					<Picker.Item label="Active" value="true" />
+					<Picker.Item label="Inactive" value="false" />
+				</Picker>
+			</View>
 
 			<Text style={styles.textField}>{'Area:'}</Text>
-			<Picker
-				selectedValue={area}
-				style={styles.inputField}
-				onValueChange={v => setFormField('area', v)}
-			>
-				<Picker.Item label="North" value="north" />
-				<Picker.Item label="West" value="west" />
-				<Picker.Item label="South" value="south" />
-				<Picker.Item label="East" value="east" />
-			</Picker>
+			<View style={styles.selectField}>
+				<Picker
+					selectedValue={area || setFormField('area', 'north')}
+					onValueChange={v => setFormField('area', v)}
+				>
+					<Picker.Item label="North" value="north" />
+					<Picker.Item label="West" value="west" />
+					<Picker.Item label="South" value="south" />
+					<Picker.Item label="East" value="east" />
+				</Picker>
+			</View>
 
-			{isEdition ? 
+			{isEdition===true ? 
 			<Button linkActionFunction={ () => { onSubmitEdit(customerID) } } textButton='Edit customer info' />:
 			<Button linkActionFunction={ onSubmit } textButton='Save customer' />}
 		</View>

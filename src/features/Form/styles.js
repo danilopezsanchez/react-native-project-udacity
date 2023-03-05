@@ -21,6 +21,14 @@ const stylesFn = () => {
 			padding: 15,
 			margin: '5%',
 			fontSize: 16,
+		},
+		selectField: {
+			borderWidth: 1,
+			borderColor: 'black',
+			borderRadius: 4,
+			margin: '5%',
+			fontSize: 16,
+			color: "red"
 		}
 	}
 

@@ -24,7 +24,10 @@ const initialState = {
 	},
     error: {
         message: ''
-    }
+    },
+	clear:{
+		status: PENDING,
+	}
 }
 
 const reducers = {
@@ -74,6 +77,9 @@ const reducers = {
             state.error.message = `could not find customer with id: ${payload}`
         }
     },
+	setFormEmpty: (state) => {
+        state.form.fields = initialState.form.fields
+    },
 	resetStatus: (state) => {
 		state.edit = initialState.edit
 		state.create = initialState.create
@@ -83,6 +89,12 @@ const reducers = {
     loadResult: (state, { payload }) => {
         state.list.customers = payload
     },
+	clearStorage: (state) => {
+		state.clear.status = PENDING
+	},
+	clearStorageResult: (state) => {
+		state.clear.status = SUCCESS
+	},
 }
 
 const slice = createSlice ({
@@ -100,9 +112,12 @@ export const {
 	editCustomerError,
     setFormField,
 	setForm,
+	setFormEmpty,
 	resetStatus,
 	loadCustomers,
 	loadResult,
+	clearStorage,
+	clearStorageResult,
 } = slice.actions
 
 export default slice.reducer

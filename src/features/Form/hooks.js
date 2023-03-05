@@ -8,6 +8,8 @@ export const useUpdateFields = (customerID = null) => {
 	useEffect(() => {
 		if (customerID) {
 		  dispatch(actions.setForm(customerID))
+		}else{
+			dispatch(actions.setFormEmpty())
 		}
 	  }, [customerID])
 

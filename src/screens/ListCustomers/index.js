@@ -12,7 +12,7 @@ const ListCustomers = (props) => {
 	const { navigate } = useNavigation()
 	const areaSelected = props.route.params.area;
 	let customers = useListCustomer()
-	customers = customers.filter((item) => {
+	customers = customers?.filter((item) => {
 		return item.area === areaSelected;
 	})
 
@@ -38,7 +38,7 @@ const ListCustomers = (props) => {
 					)
 				})
 			}
-			{!customers || customers.length === 0 && <Text>{'No customers added yet'}</Text>}
+			{!customers || customers?.length === 0 ? <Text>{'No customers added yet'}</Text> : null}
 			
         </View>
 		</ScrollView>
