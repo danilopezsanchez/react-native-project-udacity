@@ -25,9 +25,7 @@ const Form = (props) => {
 	} = fields;
 
 	useEffect(()=>{
-		console.log("setting")
 		if(!customerID){
-			console.log("setting2")
 			setFormField('active', 'true')
 			setFormField('area', 'north')
 			setFormField('reminder', 'false')
