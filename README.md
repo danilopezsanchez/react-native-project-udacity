@@ -20,6 +20,12 @@ or
 
 ### `npx expo start --tunnel` (This option avoid problems with mobile devices)
 
+## Testing
+
+App tested in:
+###### Web: Chrome Versión 110.0.5481.100 (Build oficial) (64 bits)
+###### Pocophone M4 Pro. OS: MIUI Global 13.0.2. Android version: 12 SP1A.210812.016
+
 ## Considerations
 
 Notifications are only available in mobile devices, not web browsers. The notification will appear 10 seconds after creating or editing a customer if the input field of reminder is active
