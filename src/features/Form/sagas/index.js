@@ -3,6 +3,7 @@ import { watchCreateCustomer } from './create';
 import { watchEditCustomer } from './edit';
 import { watchLoadCustomers } from './load';
 import { watchClearStorage } from './clear';
+import { watchSendNotification } from './notification';
 
 export default function* customer() {
     yield all([
@@ -10,5 +11,6 @@ export default function* customer() {
 		watchEditCustomer(),
 		watchLoadCustomers(),
 		watchClearStorage(),
+		watchSendNotification(),
     ])
 }

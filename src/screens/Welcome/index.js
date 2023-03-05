@@ -6,6 +6,7 @@ import Button from '../../components/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../../features/Form/reducers'
 import { useEffect } from "react";
+import { notificationCustomer } from '../../utilities/notifications'
 
 const Welcome = () => {
 	const styles = stylesFn();
@@ -13,6 +14,10 @@ const Welcome = () => {
 	const { navigate } = useNavigation()
 	const dispatch = useDispatch();
 	const statusClear = useSelector(state => state.customer.clear.status);
+
+	useEffect(()=> {
+		notificationCustomer();
+	},[])
 
 	useEffect(()=> {
 		if(statusClear==='SUCCESS')

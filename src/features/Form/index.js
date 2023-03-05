@@ -4,7 +4,7 @@ import { Picker } from '@react-native-picker/picker'
 import { useNewCustomer, useUpdateFields, useEditCustomer } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Form = (props) => {
 	let customerID = null;
@@ -21,11 +21,17 @@ const Form = (props) => {
 		lastname,
 		active,
 		area,
+		reminder,
 	} = fields;
-	console.log("areaaaa:", area)
-	console.log("activeeee:", active)
 
-	//const [selectedValue, setSelectedValue] = useState("java");
+	useEffect(()=>{
+		if(!customerID){
+			setFormField('active', true)
+			setFormField('area', 'north')
+			setFormField('reminder', false)
+		}
+	}, [])
+	
 
 	return (
 		<View style={styles.container}>
@@ -50,7 +56,7 @@ const Form = (props) => {
 			<Text style={styles.textField}>{'Active:'}</Text>
 			<View style={styles.selectField}>
 				<Picker
-					selectedValue={active || setFormField('active', true)}
+					selectedValue={active}
 					onValueChange={v => setFormField('active', v)}
 				>
 					<Picker.Item label="Active" value="true" />
@@ -61,13 +67,24 @@ const Form = (props) => {
 			<Text style={styles.textField}>{'Area:'}</Text>
 			<View style={styles.selectField}>
 				<Picker
-					selectedValue={area || setFormField('area', 'north')}
+					selectedValue={area}
 					onValueChange={v => setFormField('area', v)}
 				>
 					<Picker.Item label="North" value="north" />
 					<Picker.Item label="West" value="west" />
 					<Picker.Item label="South" value="south" />
 					<Picker.Item label="East" value="east" />
+				</Picker>
+			</View>
+
+			<Text style={styles.textField}>{'Call reminder (test: 10 sec):'}</Text>
+			<View style={styles.selectField}>
+				<Picker
+					selectedValue={reminder}
+					onValueChange={v => setFormField('reminder', v)}
+				>
+					<Picker.Item label="No" value="false" />
+					<Picker.Item label="Yes" value="true" />
 				</Picker>
 			</View>
 

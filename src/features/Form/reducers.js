@@ -20,6 +20,7 @@ const initialState = {
 			lastname: '',
 			active: '',
 			area: '',
+			reminder:'',
 		}
 	},
     error: {
@@ -95,6 +96,8 @@ const reducers = {
 	clearStorageResult: (state) => {
 		state.clear.status = SUCCESS
 	},
+	sendNotification: () => {
+	}
 }
 
 const slice = createSlice ({
@@ -118,6 +121,7 @@ export const {
 	loadResult,
 	clearStorage,
 	clearStorageResult,
+	sendNotification,
 } = slice.actions
 
 export default slice.reducer

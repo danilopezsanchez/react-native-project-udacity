@@ -1,6 +1,7 @@
 import { all, put, select, takeLatest, delay } from 'redux-saga/effects'
 import * as actions from '../reducers'
 import { set } from '../../../utilities/async_storage'
+import { sendNotification } from '../../../utilities/notifications'
 
 export function* watchEditCustomer() {
     yield takeLatest(actions.editCustomer.toString(), takeEditCustomer)
@@ -25,6 +26,9 @@ export function* takeEditCustomer(action) {
         yield delay(500)
 		yield set('CUSTOMERS_KEY', result);
         yield put(actions.editCustomerResult(result))
+		if(fields.reminder){
+			sendNotification(fields)
+		}
     } catch (error) {
         yield put(actions.editCustomerError(error.toString()))
     }
