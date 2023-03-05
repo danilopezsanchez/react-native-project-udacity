@@ -12,7 +12,7 @@ const CustomerInfo = (props) => {
 			>
 				<Text> Name: {name}</Text>
 				<Text> LastName: {lastName} </Text>
-				<Text> Status: {status}</Text>
+				<Text> Active: {status}</Text>
 				<Text> Area: {area}</Text>
 			</TouchableOpacity>
 			
