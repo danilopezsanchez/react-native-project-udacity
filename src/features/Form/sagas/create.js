@@ -1,4 +1,4 @@
-import { all, put, select, takeLatest, delay } from 'redux-saga/effects'
+import { put, select, takeLatest, delay } from 'redux-saga/effects'
 import * as actions from '../reducers'
 import { set } from '../../../utilities/async_storage'
 import { sendNotification } from '../../../utilities/notifications'
@@ -13,7 +13,7 @@ export function* takeCreateCustomer() {
         const fields = yield select(state => state.customer.form.fields)
         const customers = yield select(state => state.customer.list.customers)
         const customer = {
-            id: customers.length + 1,
+            id: customers?.length + 1,
             ...fields,
         };
         // pretend call to API

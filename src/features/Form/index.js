@@ -4,7 +4,7 @@ import { Picker } from '@react-native-picker/picker'
 import { useNewCustomer, useUpdateFields, useEditCustomer } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 const Form = (props) => {
 	let customerID = null;
@@ -25,10 +25,12 @@ const Form = (props) => {
 	} = fields;
 
 	useEffect(()=>{
+		console.log("setting")
 		if(!customerID){
-			setFormField('active', true)
+			console.log("setting2")
+			setFormField('active', 'true')
 			setFormField('area', 'north')
-			setFormField('reminder', false)
+			setFormField('reminder', 'false')
 		}
 	}, [])
 	

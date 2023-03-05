@@ -1,6 +1,6 @@
 sendNotification
 
-import { all, put, select, delay, takeLatest } from 'redux-saga/effects'
+import { takeLatest } from 'redux-saga/effects'
 import * as actions from '../reducers'
 import { sendNotification } from '../../../utilities/notifications'
 

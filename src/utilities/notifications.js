@@ -1,6 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
-import { Keyboard, TextInput, View, Button, Text } from 'react-native'
+import { Keyboard} from 'react-native'
 import Constants from 'expo-constants'
 import * as Device from 'expo-device';
 import { Platform } from 'react-native';
