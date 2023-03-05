@@ -1,8 +1,9 @@
 
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, Picker } from 'react-native'
 import { useNewCustomer, useUpdateFields, useEditCustomer } from './hooks'
 import stylesFn from './styles'
 import Button from '../../components/Button'
+import { useState } from 'react'
 
 const Form = (props) => {
 	let customerID = null;
@@ -21,9 +22,11 @@ const Form = (props) => {
 		area,
 	} = fields;
 
+	//const [selectedValue, setSelectedValue] = useState("java");
+
 	return (
 		<View style={styles.container}>
-
+			<Text style={styles.textField}>{'Name'}</Text>
 			<TextInput
 				key={'name'}
 				placeholder='Name'
@@ -32,29 +35,36 @@ const Form = (props) => {
 				style={styles.inputField}
 			/>
 
+			<Text style={styles.textField}>{'Lastname'}</Text>
 			<TextInput
 				key={'lastname'}
-				placeholder='LastName'
+				placeholder='Lastname'
 				value={lastname || ''}
 				style={styles.inputField}
 				onChangeText={v => setFormField('lastname', v)}
 			/>
 
-			<TextInput
-				key={'active'}
-				placeholder='active'
-				value={active || ''}
+			<Text style={styles.textField}>{'Active:'}</Text>
+			<Picker
+				selectedValue={active}
 				style={styles.inputField}
-				onChangeText={v => setFormField('active', v)}
-			/>
+				onValueChange={v => setFormField('active', v)}
+			>
+				<Picker.Item label="Active" value="true" />
+				<Picker.Item label="Inactive" value="false" />
+			</Picker>
 
-			<TextInput
-				key={'area'}
-				placeholder='area'
-				value={area || ''}
+			<Text style={styles.textField}>{'Area:'}</Text>
+			<Picker
+				selectedValue={area}
 				style={styles.inputField}
-				onChangeText={v => setFormField('area', v)}
-			/>
+				onValueChange={v => setFormField('area', v)}
+			>
+				<Picker.Item label="North" value="north" />
+				<Picker.Item label="West" value="west" />
+				<Picker.Item label="South" value="south" />
+				<Picker.Item label="East" value="east" />
+			</Picker>
 
 			{isEdition ? 
 			<Button linkActionFunction={ () => { onSubmitEdit(customerID) } } textButton='Edit customer info' />:
